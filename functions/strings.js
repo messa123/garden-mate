@@ -97,6 +97,30 @@ const cats = {
   "factPrefix": "Alright, here's a cat fact. <audio src=\"%s\"></audio>"
 };
 
+const plants = {
+  "suggestion": "Cats",
+  "facts": [
+    "Plants are alive.",
+    "Vegetables are plants.",
+    "Flowers are colourful plants!"
+  ],
+  "images": [
+    [
+      "https://developers.google.com/web/fundamentals/accessibility/semantics-builtin/imgs/160204193356-01-cat-500.jpg",
+      "Gray Cat"
+    ]
+  ],
+  /**
+   * This sample uses a sound clip from the Actions on Google Sound Library
+   * https://developers.google.com/actions/tools/sound-library
+   */
+  "sounds": [
+    "https://actions.google.com/sounds/v1/animals/cat_purr_close.ogg"
+  ],
+  "link": "https://www.google.com/search?q=cats",
+  "factPrefix": "Alright, here's a plant fact. <audio src=\"%s\"></audio>"
+};
+
 const transitions = {
   "content": {
     "heardItAll": "Looks like you've heard all there is to know about the %s of Google. I could tell you about its %s instead.",
@@ -104,6 +128,9 @@ const transitions = {
   },
   "cats": {
     "heardItAll": "Looks like you've heard all there is to know about cats. Would you like to hear about Google?"
+  },
+  "plants":{
+    "heardItAll": "Looks like you've heard all there is to know about plants. Would you like to hear about Google?"
   }
 };
 
