@@ -118,7 +118,7 @@ const plants = {
     "https://actions.google.com/sounds/v1/animals/cat_purr_close.ogg"
   ],
   "link": "https://www.google.com/search?q=cats",
-  "factPrefix": "Alright, here's a plant fact. <audio src=\"%s\"></audio>"
+  "factPrefix": "Alright, here's a plant fact."
 };
 
 const transitions = {
@@ -150,6 +150,7 @@ const general = {
     ]
   },
   "nextFact": "Would you like to hear another fact?",
+  "anythingElse": "Would you like to hear a plant fact?",
   "linkOut": "Learn more",
   "wantWhat": "So what would you like to hear about?",
   "unhandled": "Welcome to Facts about Google! I'd really rather not talk about %s. Wouldn't you rather talk about Google? I can tell you about Google's history or its headquarters. Which do you want to hear about?"

@@ -258,44 +258,41 @@ const tellCatFact = app => {
 };
 
 const findGardenCentre = app => {
-  const fact  = 'FOUND IT';
-
+  const fact = 'LOCATION';
   /** @type {boolean} */
   const screenOutput = app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT);
   if (!fact) {
-      return app.tell("1");
-  //   // // Add facts context to outgoing context list
-  //   // app.setContext(Contexts.FACTS, Lifespans.DEFAULT, {});
-  //   // // Replace outgoing cat-facts context with lifespan = 0 to end it
-  //   // app.setContext(Contexts.PLANTS, Lifespans.END, {});
-  //   // if (!screenOutput) {
-  //   //   return app.ask(strings.transitions.plants.heardItAll, strings.general.noInputs);
-  //   // }
-  //   // const richResponse = app.buildRichResponse()
-  //   //   .addSimpleResponse(strings.transitions.plants.heardItAll, strings.general.noInputs)
-  //   //   .addSuggestions(strings.general.suggestions.confirmation);
+    // Add facts context to outgoing context list
+    app.setContext(Contexts.FACTS, Lifespans.DEFAULT, {});
+    // Replace outgoing cat-facts context with lifespan = 0 to end it
+    app.setContext(Contexts.PLANTS, Lifespans.END, {});
+    if (!screenOutput) {
+      return app.ask(strings.transitions.plants.heardItAll, strings.general.noInputs);
+    }
+    const richResponse = app.buildRichResponse()
+      .addSimpleResponse(strings.transitions.plants.heardItAll, strings.general.noInputs)
+      .addSuggestions(strings.general.suggestions.confirmation);
 
-  //   // return app.ask(richResponse);
-  // }
-  // const factPrefix = sprintf(strings.plants.factPrefix, getRandomValue(strings.plants.sounds));
-  // if (!screenOutput) {
-  //     return app.tell("2");
-  //   // // <speak></speak> is needed here since factPrefix is a SSML string and contains audio
-  //   // return app.ask(`<speak>${concat([factPrefix, fact, strings.general.nextFact])}</speak>`, strings.general.noInputs);
-  // }
-  // const image = getRandomValue(strings.plants.images);
-  // const [url, name] = image;
-  // const card = app.buildBasicCard(fact)
-  //   .setImage(url, name)
-  //   .addButton(strings.general.linkOut, strings.plants.link);
+    return app.ask(richResponse);
+  }
+  const factPrefix = "Alright, here's a garden centre."
+  if (!screenOutput) {
+    // // <speak></speak> is needed here since factPrefix is a SSML string and contains audio
+    return app.ask(`<speak>${concat([factPrefix, fact, strings.general.anythingElse])}</speak>`, strings.general.noInputs);
+  }
+  const image = getRandomValue(strings.plants.images);
+  const [url, name] = image;
+  const card = app.buildBasicCard(fact)
+    .setImage(url, name)
+    .addButton(strings.general.linkOut, strings.plants.link);
 
-  // const richResponse = app.buildRichResponse()
-  //   .addSimpleResponse(`<speak>${factPrefix}</speak>`)
-  //   .addBasicCard(card)
-  //   .addSimpleResponse(strings.general.nextFact)
-  //   .addSuggestions(strings.general.suggestions.confirmation);
+  const richResponse = app.buildRichResponse()
+    .addSimpleResponse(`<speak>${factPrefix}</speak>`)
+    .addBasicCard(card)
+    .addSimpleResponse(strings.general.nextFact)
+    .addSuggestions(strings.general.suggestions.confirmation);
 
-  // app.tell(richResponse, strings.general.noInputs);
+  app.tell(richResponse, strings.general.noInputs);
 
 }
 
